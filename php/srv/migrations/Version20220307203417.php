@@ -23,7 +23,7 @@ final class Version20220307203417 extends AbstractMigration
             VALUES 
            ("tino","1988/11/03"),
            ("agata","1988/01/17"),
-           ("allen","2017/03/08");
+           ("allen","2017/03/05");
         ');
     }
 

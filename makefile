@@ -34,8 +34,14 @@ composer-install: ## composer install
 	$(compose) exec -T php sh -lc 'composer install --no-interaction'
 
 .PHONY: tests
-tests: ## composer install
+tests: db ## composer install
 	$(compose) exec -T php sh -lc 'bin/phpunit'
+
+.PHONY: db
+db: ## reset db
+	$(compose) exec -T php sh -lc 'bin/console doctrine:database:drop -f --quiet'
+	$(compose) exec -T php sh -lc 'bin/console doctrine:database:create --quiet'
+	$(compose) exec -T php sh -lc 'bin/console doctrine:migrations:migrate --no-interaction --quiet'
 
 .PHONY: help
 help: ## Display this help message
