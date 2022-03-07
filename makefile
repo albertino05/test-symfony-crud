@@ -1,10 +1,10 @@
-app_env=dev
+APP_ENV=dev
 
 # internal
 COMPOSE_PROJECT_NAME=demo_test
 compose=docker-compose -f docker-compose.yml
 
-export compose COMPOSE_PROJECT_NAME app_env
+export compose COMPOSE_PROJECT_NAME APP_ENV
 
 .PHONY: start
 start: down up composer-install## Start dev
