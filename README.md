@@ -1,12 +1,20 @@
 # Test symfony
 
+## how to
+    # start services
+    make start
 
+    # setup db
+    make db
 
-# 1 - Match datetime from string
+    # run tests
+    make tests
+
+### 1 - Match datetime from string
     - view service App\\Service\\DateTimeMatcher
     - view tests App\\Tests\\MatchDateFromStringTest
 
-# 2 - Endpoint update person entity
+### 2 - Endpoint update person entity
 
     - view App\\Controller\\PersonController
     - view App\\Tests\\PersonTest
