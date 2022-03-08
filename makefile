@@ -33,15 +33,17 @@ logs: ## look for 's' service logs, make s=php logs
 composer-install: ## composer install
 	$(compose) exec -T php sh -lc 'composer install --no-interaction'
 
+# tests: ## tests
 .PHONY: tests
-tests: db ## composer install
+tests: APP_ENV = test
+tests: db ## tests
 	$(compose) exec -T php sh -lc 'bin/phpunit'
 
 .PHONY: db
 db: ## reset db
-	$(compose) exec -T php sh -lc 'bin/console doctrine:database:drop -f --quiet'
-	$(compose) exec -T php sh -lc 'bin/console doctrine:database:create --quiet'
-	$(compose) exec -T php sh -lc 'bin/console doctrine:migrations:migrate --no-interaction --quiet'
+	-$(compose) exec -T php sh -lc 'bin/console doctrine:database:drop -f -e $(APP_ENV)'
+	$(compose) exec -T php sh -lc 'bin/console doctrine:database:create --quiet -e $(APP_ENV)'
+	$(compose) exec -T php sh -lc 'bin/console doctrine:migrations:migrate --no-interaction --quiet -e $(APP_ENV)'
 
 .PHONY: help
 help: ## Display this help message

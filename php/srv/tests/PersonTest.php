@@ -7,7 +7,7 @@ use Symfony\Component\HttpFoundation\Response;
 
 class PersonTest extends WebTestCase
 {
-    public function testUpdateCategory(): void
+    public function testUpdatePerson(): void
     {
         $client = static::createClient();
 
@@ -25,7 +25,7 @@ class PersonTest extends WebTestCase
         $this->assertStringContainsString('2017\/03\/08', $content);
     }
 
-    public function testUpdateCategoryError(): void
+    public function testUpdatePersonError(): void
     {
         $client = static::createClient();
 

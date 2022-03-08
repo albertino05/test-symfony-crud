@@ -40,7 +40,7 @@ class PersonManager
         ];
     }
 
-    protected function fromArray(array $data, Person $entity) : Person
+    protected function fromArray(array $data, Person $entity): Person
     {
 
         if (isset($data['name'])) {
